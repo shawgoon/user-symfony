@@ -4,10 +4,17 @@ namespace App\Entity;
 
 use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
  */
+
+// * @UniqueEntity(
+// * fields="email",
+// * message="l'email existe déjà")
+//  à remettre en polace lorsque j'aurai le "use"
+
 class User
 {
     /**
@@ -46,6 +53,13 @@ class User
      * @ORM\Column(type="string", length=255)
      */
     private $password;
+
+    // /**
+    //  * @Assert/EqualTo(
+    //  * propertyPath = "password",
+    //  * message = "les mots de pass ne sont pas identiques")
+    //  */
+    // public $confirmPassword;
 
     public function getId(): ?int
     {
